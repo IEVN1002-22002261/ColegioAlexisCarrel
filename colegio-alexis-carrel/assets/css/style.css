@@ -1,0 +1,80 @@
+/* Paleta de colores extraída del Logo Oficial */
+:root {
+    /* Un Azul Rey vibrante idéntico al del logo */
+    --navy: #003AA6; 
+    /* Un Amarillo brillante y puro */
+    --gold: #FFD500; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body { font-family: 'Open Sans', sans-serif; }
+h1, h2, h3, .fw-bold { font-family: 'Montserrat', sans-serif; }
+
+.text-navy { color: var(--navy) !important; }
+.bg-navy { background-color: var(--navy) !important; }
+
+/* Botones personalizados para que coincidan con el logo */
+.btn-warning {
+    background-color: var(--gold) !important;
+    color: #003AA6 !important; /* Texto azul sobre botón amarillo */
+    border: none;
+}
+.btn-warning:hover {
+    background-color: #e6c000 !important;
+}
+
+/* Animación de los dropdowns */
+.dropdown-menu {
+    border-top: 3px solid var(--gold) !important;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-link { font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
+.nav-link:hover { color: var(--gold) !important; }
+
+.card { transition: all 0.3s ease; }
+.card:hover { transform: translateY(-5px); }
+
+/* CSS PARA LA PREVIEW DE GALERÍA */
+
+/* Obliga a todas las imágenes a ser cuadrados perfectos sin deformarse */
+.preview-img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Hace que sean cuadradas */
+    object-fit: cover;  /* Recorta lo sobrante sin aplastar la foto */
+    opacity: 0.8;       /* Un poco opacas para que resalte el botón */
+    transition: opacity 0.3s ease;
+}
+
+.preview-img:hover {
+    opacity: 1;
+}
+
+/* El efecto de degradado (Fade-out) CORREGIDO */
+.fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px; /* Cubre la mitad inferior de las fotos */
+    
+    /* Degradado perfecto: de transparente a Azul Rey sólido (#003AA6) */
+    background: linear-gradient(to bottom, rgba(0, 58, 166, 0) 0%, rgba(0, 58, 166, 0.9) 65%, rgba(0, 58, 166, 1) 100%);
+    z-index: 10;
+    
+    /* Evita que el área transparente bloquee los clics en las fotos de arriba */
+    pointer-events: none; 
+}
+
+/* Permitimos que el botón sí se pueda clickear */
+.fade-overlay .btn {
+    pointer-events: auto;
+}
